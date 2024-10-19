@@ -1,20 +1,22 @@
 package com.frontend.multisorterfx;
 
+import com.frontend.multisorterfx.statics.SceneSwitcher;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 
 public class SplashScene extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(SplashScene.class.getResource("splash-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
-        stage.setScene(scene);
-        stage.show();
+        SceneSwitcher.setStage(stage,"splash-view.fxml", 320, 240);
+        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(3000), event ->{
+            SceneSwitcher.setStage(stage,"sort-view.fxml", 700, 500);
+        }));
+        timeline.play();
     }
 
     public static void main(String[] args) {

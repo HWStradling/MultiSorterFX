@@ -1,9 +1,8 @@
 package com.frontend.multisorterfx;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class SplashController {
+public class SortController {
     @FXML
-    private Label splashText;
+    public Label headingText;
 }
