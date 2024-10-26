@@ -10,11 +10,14 @@ import javafx.util.Duration;
 import java.io.IOException;
 
 public class SplashScene extends Application {
+
+    private final double splashSceneDuration = 3000;
     @Override
     public void start(Stage stage) throws IOException {
-        SceneSwitcher.setStage(stage,"splash-view.fxml", 320, 240);
-        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(3000), event ->{
-            SceneSwitcher.setStage(stage,"sort-view.fxml", 700, 500);
+        SceneSwitcher.setStage(stage);
+        SceneSwitcher.setScene("splash-view.fxml", 20, 20);
+        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(splashSceneDuration), event ->{
+            SceneSwitcher.setScene("sort-view.fxml", 50, 50);
         }));
         timeline.play();
     }
