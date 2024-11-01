@@ -44,9 +44,4 @@ public class Quicksort extends SortingAlgorithm {
 
         return convergenceIndex;
     }
-    private void swap(int swapIndex1, int swapIndex2) {
-        int temp = sortingList[swapIndex1];
-        sortingList[swapIndex1] = sortingList[swapIndex2];
-        sortingList[swapIndex2] = temp;
-    }
 }

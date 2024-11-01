@@ -9,4 +9,9 @@ public abstract class SortingAlgorithm {
     public void print(){
         System.out.println(this.getClass().getSimpleName() +  Arrays.toString(sortingList));
     }
+    public void swap(int swapIndex1, int swapIndex2) {
+        int temp = sortingList[swapIndex1];
+        sortingList[swapIndex1] = sortingList[swapIndex2];
+        sortingList[swapIndex2] = temp;
+    }
 }

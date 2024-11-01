@@ -1,5 +1,6 @@
 package com.frontend.multisorterfx;
 
+import com.backend.multisorterfx.BubbleSort;
 import com.backend.multisorterfx.InsertionSort;
 import com.backend.multisorterfx.Quicksort;
 import com.backend.multisorterfx.statics.UnsortedArray;
@@ -28,6 +29,8 @@ public class SplashScene extends Application {
     public static void main(String[] args) {
         new Quicksort().sort(UnsortedArray.getUnsortedArray(10, 100));
         new InsertionSort().sort(UnsortedArray.getUnsortedArray(10, 100));
+        new BubbleSort().sort(UnsortedArray.getUnsortedArray(10, 100));
+
         launch();
     }
 }
