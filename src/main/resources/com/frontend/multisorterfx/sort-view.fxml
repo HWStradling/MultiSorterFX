@@ -1,21 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
-<HBox fx:id="rootContainer" id="rootContainer" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.frontend.multisorterfx.SortController">
-   <VBox fx:id="displayPaneContainer">
-      <VBox fx:id="topDisplayPane" id="topDisplay" VBox.vgrow="ALWAYS"/>
-      <VBox fx:id="bottomDisplayPane" id="bottomDisplay" VBox.vgrow="ALWAYS"/>
+<HBox id="rootContainer" fx:id="rootContainer" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.frontend.multisorterfx.SortController">
+   <VBox fx:id="displayPaneContainer" HBox.hgrow="ALWAYS">
+      <VBox id="topDisplay" fx:id="topDisplayPane" alignment="TOP_CENTER" VBox.vgrow="ALWAYS">
+         <Button fx:id="generateButton" onAction="#onGenerateButtonAction" text="Generate" />
+         <HBox alignment="BASELINE_LEFT" fillHeight="false" spacing="5.0">
+            <children>
+               <Label text="Max Element Size:" />
+               <Spinner fx:id="integerRange" prefHeight="25.0" prefWidth="61.0" />
+            </children>
+         </HBox>
+         <HBox fillHeight="false" spacing="5.0">
+            <children>
+               <Label alignment="CENTER" text="Array Length:" />
+               <Slider fx:id="arrayLengthSlider" blockIncrement="1.0" majorTickUnit="1.0" max="10.0" min="1.0" minorTickCount="1" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" HBox.hgrow="ALWAYS" />
+            </children>
+         </HBox>
+         <Label fx:id="unsortedArrayLabel" text="Label" />
+      </VBox>
+      <VBox id="bottomDisplay" fx:id="bottomDisplayPane" alignment="CENTER" VBox.vgrow="ALWAYS">
+         <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+               <children>
+                  <Label fx:id="algorithmNameLabel" text="Label" />
+                  <Label fx:id="sortedArrayLabel" text="Label" />
+               </children>
+            </HBox>
+         </children></VBox>
    </VBox>
-   <VBox fx:id="buttonPane" alignment="TOP_CENTER">
-      <Button fx:id="quickSortButton" mnemonicParsing="false" text="QuickSort"/>
-      <Button fx:id="mergeSortButton" mnemonicParsing="false" styleClass="butt" text="MergeSort"/>
-      <Button fx:id="insertionSortButton" mnemonicParsing="false" text="InsertionSort"/>
-      <Button fx:id="bubbleSortButton" mnemonicParsing="false" text="BubbleSort"/>
-      <Button fx:id="selectionSortButton" mnemonicParsing="false" text="SelectionSort"/>
+   <VBox fx:id="buttonPane" alignment="TOP_CENTER" HBox.hgrow="ALWAYS">
+      <Button fx:id="quickSortButton" mnemonicParsing="false" onAction="#onQuicksortButtonAction" text="QuickSort" />
+      <Button fx:id="mergeSortButton" mnemonicParsing="false" onAction="#onMergesortButtonAction" text="MergeSort" />
+      <Button fx:id="insertionSortButton" mnemonicParsing="false" onAction="#onInsertionsortButtonAction" text="InsertionSort" />
+      <Button fx:id="bubbleSortButton" mnemonicParsing="false" onAction="#onBubblesortButtonAction" text="BubbleSort" />
+      <Button fx:id="selectionSortButton" mnemonicParsing="false" onAction="#onSelectionsortButtonAction" text="SelectionSort" />
    </VBox>
 </HBox>
