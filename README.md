@@ -1,7 +1,7 @@
 # MultiSorter (Work in Progress)
 
 This is a **JavaFX-based application** designed to **visualize sorting algorithms**.
-The application provides an interactive interface for triggering various sorting algorithms and observing the sorting process in step-by-step.
+The application provides an interactive interface to run various sorting algorithms and observe the sorting process step-by-step.
 The main goal of the project is to serve as an educational tool, 
 helping users to understand sorting algorithms through clear visualization.
 
