@@ -1,9 +1,10 @@
 package com.backend.multisorterfx;
 
+import com.backend.multisorterfx.statics.SortedArray;
+
 public class BubbleSort extends SortingAlgorithm {
     @Override
-    public void sort(int[] sortingList) {
-        this.sortingList = sortingList;
+    public void sort() {
         print();
         bubblesort();
         print();

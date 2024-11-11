@@ -1,9 +1,11 @@
 package com.backend.multisorterfx;
 
+import com.backend.multisorterfx.statics.SortedArray;
+
 public class SelectionSort extends SortingAlgorithm{
     @Override
-    public void sort(int[] sortingList) {
-        this.sortingList = sortingList;
+    public void sort() {
+        this.sortingList = SortedArray.getSortedArray();
         print();
         selectionsort();
         print();

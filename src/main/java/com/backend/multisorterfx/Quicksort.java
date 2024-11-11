@@ -5,8 +5,7 @@ import java.util.Random;
 public class Quicksort extends SortingAlgorithm {
 
     @Override
-    public void sort(int[] sortingList){
-        this.sortingList = sortingList;
+    public void sort(){
         print();
         quickSort(0, sortingList.length - 1);
         print();

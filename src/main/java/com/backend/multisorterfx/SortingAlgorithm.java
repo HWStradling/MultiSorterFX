@@ -6,7 +6,7 @@ public abstract class SortingAlgorithm {
 
     protected int[] sortingList;
 
-    public abstract void sort(int[] sortingList);
+    public abstract void sort();
 
     protected void print() {
         System.out.println(this.getClass().getSimpleName() + Arrays.toString(sortingList));
