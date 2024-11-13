@@ -6,15 +6,21 @@ public class InsertionSort extends SortingAlgorithm {
 
     @Override
     public void sort() {
-        print();
-        insertionSort();
-        print();
+        SortedArray.acquireSortingLock();
+        try {
+            sortingArray = SortedArray.getSortedArray();
+            print();
+            insertionSort();
+            print();
+        } finally {
+            SortedArray.releaseSortingLock();
+        }
     }
     public void insertionSort(){
         try {
-            for (int i = 0; i < sortingList.length; i++){
+            for (int i = 0; i < sortingArray.length; i++){
                 int x = i;
-                while (x > 0 && sortingList[x] < sortingList[x-1]){
+                while (x > 0 && sortingArray[x] < sortingArray[x-1]){
                     swap(x, x-1);
                     x--;
                 }

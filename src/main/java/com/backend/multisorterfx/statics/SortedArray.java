@@ -1,34 +1,45 @@
 package com.backend.multisorterfx.statics;
 
+import java.util.Arrays;
 import java.util.Random;
+import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class UnsortedArray {
-
-    private static int[] unsortedArray;
+public class SortedArray {
+    private static int[] sortedArray;
     private static final ReentrantLock lock = new ReentrantLock();
     private static final ReentrantLock sortLock = new ReentrantLock(true);
-
-    public static void setUnsortedArray(int arrayLength, int intRange) {
+    public  void setSortedArray() {
         awaitSortLock();
         lock.lock();
-        try {
-            int[] array = new int[arrayLength];
-            Random rand = new Random();
-            for (int i = 0; i < array.length; i++) {
-                array[i] = rand.nextInt(intRange);
+        try{
+            int[] array = UnsortedArray.getUnsortedArray();
+            if (array == null){
+                //todo notification to user.
+                return;
             }
-            unsortedArray = array;
+            sortedArray = Arrays.copyOf(array, array.length);
         } finally {
             lock.unlock();
         }
     }
-    public static int[] getUnsortedArray() {
+
+    public static synchronized int[] getSortedArray() {
         awaitSortLock();
         lock.lock();
-        try {
-            return unsortedArray;
-        } finally {
+        try{
+            return sortedArray;
+
+        }finally {
+            lock.unlock();
+        }
+    }
+    public static int getSortedArrayLength() {
+        awaitSortLock();
+        lock.lock();
+        try{
+            return sortedArray.length;
+        }finally {
             lock.unlock();
         }
     }

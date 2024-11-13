@@ -6,9 +6,15 @@ public class Mergesort extends SortingAlgorithm {
 
     @Override
     public void sort() {
-        print();
-        mergesort(sortingList);
-        print();
+        SortedArray.acquireSortingLock();
+        try {
+            sortingArray = SortedArray.getSortedArray();
+            print();
+            mergesort(sortingArray);
+            print();
+        } finally {
+            SortedArray.releaseSortingLock();
+        }
     }
 
     private void mergesort(int[] array) {
