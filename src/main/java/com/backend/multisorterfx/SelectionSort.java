@@ -1,21 +1,14 @@
 package com.backend.multisorterfx;
 
+import com.backend.multisorterfx.statics.SortedArray;
+
 public class SelectionSort extends SortingAlgorithm{
     @Override
-    public void sort(int[] sortingList) {
-        this.sortingList = sortingList;
-        print();
-        selectionsort();
-        print();
-    }
-
-    private void selectionsort() {
-
-
-        for (int x = 0; x < sortingList.length - 1; x++) {
+    protected void sort() {
+        for (int x = 0; x < sortingArray.length - 1; x++) {
             int currentMinimum = x;
-            for (int i = x + 1; i < sortingList.length ; i++) { // starts comparison after sorted partition.
-                if (sortingList[i] < sortingList[currentMinimum]){
+            for (int i = x + 1; i < sortingArray.length ; i++) { // starts comparison after sorted partition.
+                if (sortingArray[i] < sortingArray[currentMinimum]){
                     currentMinimum = i;
                 }
             }

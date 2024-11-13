@@ -1,6 +1,7 @@
 package com.frontend.multisorterfx;
 
 import com.backend.multisorterfx.*;
+import com.backend.multisorterfx.statics.SortedArray;
 import com.backend.multisorterfx.statics.UnsortedArray;
 import com.frontend.multisorterfx.statics.SceneSwitcher;
 import javafx.application.Platform;
@@ -14,7 +15,6 @@ import javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-import java.security.InvalidParameterException;
 import java.util.Arrays;
 
 
@@ -52,15 +52,12 @@ public class SortController {
     private Spinner<Integer> integerRange;
     @FXML
     private Label unsortedArrayLabel;
-    private int[] unsortedArray = new int[10];
 
     //Sorted Array Elements
     @FXML
     private Label sortedArrayLabel;
     @FXML
     private Label algorithmNameLabel;
-    private int[] sortingArray = new int[10];
-
     @FXML
     public void initialize() {
         Platform.runLater(() -> {
@@ -109,17 +106,16 @@ public class SortController {
     public void onGenerateButtonAction(ActionEvent actionEvent) {
         //todo push to notification stack/make notification stack
         try {
-            unsortedArray = UnsortedArray.getUnsortedArray((int) arrayLengthSlider.getValue(), integerRange.getValue());
+            UnsortedArray.setUnsortedArray((int) arrayLengthSlider.getValue(), integerRange.getValue());
         } catch (Exception e) {
             System.out.print("slider value cast failed or get int range, using default array length of 5");
-            unsortedArray = UnsortedArray.getUnsortedArray(10, 10);
+            UnsortedArray.setUnsortedArray(10, 10);
         }
         displayUnsortedArray();
         resetSortingArray();
     }
 
     private void sortCaller(String x){
-        System.out.println(x);
         resetSortingArray();
         SortingAlgorithm sortingAlgorythm;
         switch (x){
@@ -148,21 +144,21 @@ public class SortController {
                 algorithmNameLabel.setText("Error Default,InsertionSort:");
                 System.out.print("algorithm switcher defaulting to insertion sort, parameter error");
         }
-        sortingAlgorythm.sort(sortingArray);
+        sortingAlgorythm.callSort();
         displaySortingArray();
 
     }
 
     private void resetSortingArray() {
-        sortingArray = Arrays.copyOf(unsortedArray, unsortedArray.length); // clones unsorted to prevent modification of unsorted array.
+        SortedArray.setSortedArray();
     }
 
     private void displayUnsortedArray() {
-        unsortedArrayLabel.setText(Arrays.toString(unsortedArray));
+        unsortedArrayLabel.setText(Arrays.toString(UnsortedArray.getUnsortedArray()));
     }
 
     private void displaySortingArray(){
         //todo make a teaching sort operations stack for bottom pane,
-        sortedArrayLabel.setText(Arrays.toString(sortingArray));
+        sortedArrayLabel.setText(Arrays.toString(SortedArray.getSortedArray()));
     }
 }
