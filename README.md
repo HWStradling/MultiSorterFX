@@ -21,6 +21,7 @@ backend **teaching queue** and **notification queue** and their corresponding us
 - **Quick Sort**: A "divide and conquer" algorithm that partitions the array around a pivot and recursively sorts sub-arrays. Highly efficient for large datasets.
 - **Selection Sort**:  Repeatedly selects the smallest (or largest) element from the unsorted portion and moves it to the sorted portion.
 - **Merge Sort**:  Recursively divides the array into halves, sorts each half, and merges them.
+- **Thread-safe arrays**: Unsorted and Sorted thread-safe arrays to decouple the frontend and backend preventing UI stuttering for large arrays.
 - **Notification Queue:** ***(Not Implemented)*** Queue's notification events decoupling the notification producer and consumer.
 - **Teaching Operations Queue:** ***(Not Implemented)*** Queue's sorting actions in a standardised way that can be displayed graphically , 
  also decouples in the same way as the notification queue.
