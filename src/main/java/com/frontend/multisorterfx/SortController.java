@@ -14,6 +14,7 @@ import javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+import java.security.InvalidParameterException;
 import java.util.Arrays;
 
 
@@ -147,7 +148,7 @@ public class SortController {
                 algorithmNameLabel.setText("Error Default,InsertionSort:");
                 System.out.print("algorithm switcher defaulting to insertion sort, parameter error");
         }
-        sortingAlgorythm.callSort(sortingArray);
+        sortingAlgorythm.sort(sortingArray);
         displaySortingArray();
 
     }

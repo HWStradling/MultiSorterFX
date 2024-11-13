@@ -1,32 +1,16 @@
 package com.backend.multisorterfx;
 
-import com.backend.multisorterfx.statics.SortedArray;
-import com.backend.multisorterfx.statics.UnsortedArray;
-
 public class Mergesort extends SortingAlgorithm {
 
     @Override
-    public void callSort() {
-        SortedArray.acquireSortingLock();
-        try {
-            sortingArray = SortedArray.getSortedArray();
-            print();
-            sort(sortingArray);
-            print();
-        }
-        catch (NullPointerException e){
-            SortedArray.setSortedArray(UnsortedArray.getUnsortedArray());
-            sortingArray = SortedArray.getSortedArray();
-            print();
-            sort(sortingArray);
-            print();
-        }
-        finally {
-            SortedArray.releaseSortingLock();
-        }
+    public void sort(int[] sortingList) {
+        this.sortingList = sortingList;
+        print();
+        mergesort(sortingList);
+        print();
     }
 
-    private void sort(int[] array) {
+    private void mergesort(int[] array) {
         int arrayLength = array.length;
         if (arrayLength < 2 ){ // recursive base case.
             return;
@@ -38,8 +22,8 @@ public class Mergesort extends SortingAlgorithm {
         System.arraycopy(array, 0, leftPartition, 0, midpoint); // more efficient than a for loop on large arrays.
         System.arraycopy(array, midpoint, rightPartition, 0, arrayLength - midpoint);
 
-        sort(leftPartition); // recursion.
-        sort(rightPartition);
+        mergesort(leftPartition); // recursion.
+        mergesort(rightPartition);
 
         merge(array, leftPartition, rightPartition); // merging partitions.
     }
