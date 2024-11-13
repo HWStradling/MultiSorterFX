@@ -1,6 +1,7 @@
 module com.frontend.multisorterfx {
     requires javafx.controls;
     requires javafx.fxml;
+    requires org.jetbrains.annotations;
 
 
     opens com.frontend.multisorterfx to javafx.fxml;
