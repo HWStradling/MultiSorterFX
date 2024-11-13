@@ -27,9 +27,10 @@ public class SplashScene extends Application {
     }
 
     public static void main(String[] args) {
+        UnsortedArray.setUnsortedArray(10,100);
         new Quicksort().callSort();
-        new InsertionSort().callSort(UnsortedArray.getUnsortedArray(10, 100));
-        new BubbleSort().callSort(UnsortedArray.getUnsortedArray(10, 100));
+        new InsertionSort().callSort();
+        new BubbleSort().callSort();
 
         launch();
     }
